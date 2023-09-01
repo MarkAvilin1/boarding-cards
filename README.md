@@ -17,7 +17,7 @@ This Python program allows you to sort a list of travel tickets to create a jour
    Change your current directory to the project folder:
 
    ```shell
-   cd ticket-boarding-sorter
+   cd boarding-cards
    ```
 
 3. **Run the Main Application:**
