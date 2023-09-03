@@ -29,7 +29,7 @@ class TestTicketSorter(unittest.TestCase):
         # Test if the sorted instructions match the expected order
         self.assertEqual(expected_order, sorted_instructions)
 
-    def test_sort_tickets_with_missing_starting_ticket(self):
+    def test_sort_tickets_with_not_missing_starting_ticket(self):
         # Create test ticket data with a missing starting ticket
         tickets = [
             TicketInformation("B", "C", "Bus"),
@@ -48,6 +48,26 @@ class TestTicketSorter(unittest.TestCase):
 
         # Check if the error message is not present in the sorted instructions list
         self.assertNotIn(expected_error_message, sorted_instructions)
+
+    def test_sort_tickets_with_missing_starting_ticket(self):
+        # Create test ticket data with a missing starting ticket
+        tickets = [
+            TicketInformation("Paris", "London", "Train"),
+            TicketInformation("Madrid", "Barcelona", "Bus"),
+            TicketInformation("Amsterdam", "Berlin", "Flight"),
+        ]
+
+        # Initialize the TicketSorter and call the sorting method
+        ticket_sorter = TicketSorter(tickets)
+
+        # Test if the sorting method returns a list containing the error message string
+        expected_error_message = ["No valid starting ticket found. Please provide a valid starting point."]
+
+        # Get the sorted instructions
+        sorted_instructions = ticket_sorter.sort_tickets()
+
+        # Check if the error message is not present in the sorted instructions list
+        self.assertEqual(expected_error_message, sorted_instructions)
 
     def test_sort_tickets_with_empty_ticket_list(self):
         # Create an empty list of ticket data
